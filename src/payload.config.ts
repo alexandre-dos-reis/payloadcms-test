@@ -3,6 +3,8 @@ import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
+import { fr } from '@payloadcms/translations/languages/fr'
+import { en } from '@payloadcms/translations/languages/en'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
@@ -62,6 +64,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URL || '',
     },
   }),
+  i18n: { fallbackLanguage: 'fr', supportedLanguages: { fr, en } },
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
